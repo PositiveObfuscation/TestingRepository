@@ -18,8 +18,8 @@ public class Output {
         lines = new ArrayList<>();
     }
 
-    public void paintLine(int rowX, int rowY, int columnX, int columnY){
-        lines.add("PAINT_LINE " + rowX + " " + rowY + " " + columnX + " " + columnY);
+    public void paintLine(int row1, int row2, int column1, int column2){
+        lines.add("PAINT_LINE " + row1 + " " + row2 + " " + column1 + " " + column2);
     }
     public void paintSquare(int row, int column, int width){
         lines.add("PAINT_SQUARE " + row + " " + column + " " + (width-1)/2);
@@ -27,9 +27,9 @@ public class Output {
     public void ereaseCell(int row, int column){
         lines.add("ERASE_CELL " + row + " " + column);
     }
-    public void generateOutput(){
+    public void generateOutput(String fileName){
         lines.add(0, "" + lines.size()); //add number of painting commands
-        Path file = Paths.get("output.out");
+        Path file = Paths.get(fileName);
         //test if file exist
         if (file.toFile().isFile()){
             Scanner reader = new Scanner(System.in);  // Reading from System.in
